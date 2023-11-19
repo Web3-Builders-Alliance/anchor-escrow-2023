@@ -1,12 +1,11 @@
-
 use anchor_lang::prelude::*;
 
 declare_id!("pCrLE3Ygn9efmpn6HC6ZDd9PKJHZEuebVERnFQ2JjXB");
 
+mod constants;
+mod contexts;
 mod errors;
 mod state;
-mod contexts;
-mod constants;
 
 use contexts::*;
 
@@ -18,7 +17,7 @@ pub mod anchor_escrow_2023 {
         ctx: Context<Make>,
         seed: u64,
         deposit_amount: u64,
-        offer_amount: u64
+        offer_amount: u64,
     ) -> Result<()> {
         ctx.accounts.init(&ctx.bumps, seed, offer_amount)?;
         ctx.accounts.transfer_to_vault(deposit_amount)
@@ -31,10 +30,7 @@ pub mod anchor_escrow_2023 {
     }
 
     // Allow maker to change the token and offer amount of the escrow
-    pub fn update(
-        ctx: Context<Update>,
-        offer_amount: u64
-    ) -> Result<()> {
+    pub fn update(ctx: Context<Update>, offer_amount: u64) -> Result<()> {
         ctx.accounts.update(offer_amount)
     }
 

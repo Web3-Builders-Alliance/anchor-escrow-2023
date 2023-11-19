@@ -16,5 +16,5 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = { git = "https://github.com/coral-xyz/anchor.git", features = ["init-if-needed"]}
-anchor-spl = { git = "https://github.com/coral-xyz/anchor.git"}
+anchor-lang = { version = "0.29.0", features = ["init-if-needed"]}
+anchor-spl = "0.29.0"
